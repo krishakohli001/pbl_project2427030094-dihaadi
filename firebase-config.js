@@ -7,7 +7,6 @@ const firebaseConfig = {
   appId: "1:1045700852467:web:1d9bd9925d20277d5f9586"
 };
 
-
 if (firebaseConfig.apiKey !== "PASTE_YOUR_API_KEY") {
   firebase.initializeApp(firebaseConfig);
   window.db = firebase.firestore();
