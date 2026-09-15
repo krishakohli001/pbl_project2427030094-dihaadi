@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dihaadi — Daily Work, Dignified</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="emergency-bar" id="emergencyBar">
+  <span>🚨 Emergency SOS</span>
+  <button onclick="triggerSOS()" class="sos-btn">Send Location & Alert</button>
+  <button onclick="document.getElementById('emergencyBar').style.display='none'" class="sos-close">✕</button>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#">⚒️ Dihaadi</a>
+    <div class="nav-links">
+      <a href="#jobs"     class="active">Jobs</a>
+      <a href="#workers">Workers</a>
+      <a href="#safety">Safety</a>
+      <a href="#khata">Digital Khata</a>
+    </div>
+    <div class="nav-right">
+      <button class="lang-btn" onclick="toggleLang()">🌐 HI / EN</button>
+      <button class="btn btn-primary btn-sm" onclick="openModal('postJob')">Post a Job</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">🇮🇳 For India's 500 Million Daily Wage Workers</div>
+  <h1 class="hero-title">Kaam Milega.<br/><em>Rozgaar Pakka.</em></h1>
+  <p class="hero-sub">Find daily work, get paid on time, build your reputation — all in one app. No middleman. No wage theft.</p>
+
+  <div class="voice-search-wrap">
+    <div class="voice-search">
+      <button class="voice-btn" onclick="startVoice()" id="voiceBtn">🎤</button>
+      <input type="text" id="searchInput" placeholder='Try: "Mujhe masonry ka kaam chahiye"' class="search-input"/>
+      <button class="search-go" onclick="doSearch()">Search</button>
+    </div>
+    <div class="voice-hint">Tap 🎤 to search by voice • बोलकर खोजें</div>
+  </div>
+
+  <div class="hero-stats">
+    <div><div class="stat-val">12,400+</div><div class="stat-lbl">Active Workers</div></div>
+    <div><div class="stat-val">3,200+</div><div class="stat-lbl">Jobs Posted</div></div>
+    <div><div class="stat-val">₹2.1Cr</div><div class="stat-lbl">Wages Paid via Escrow</div></div>
+    <div><div class="stat-val">98.2%</div><div class="stat-lbl">On-time Payment Rate</div></div>
+  </div>
+</section>
+
+<section class="categories" id="jobs">
+  <div class="wrap">
+    <div class="section-label">Browse by skill</div>
+    <div class="cat-row">
+      <button class="cat-chip active" data-cat="all">All Jobs</button>
+      <button class="cat-chip" data-cat="masonry">🧱 Masonry</button>
+      <button class="cat-chip" data-cat="plumbing">🔧 Plumbing</button>
+      <button class="cat-chip" data-cat="electrical">⚡ Electrical</button>
+      <button class="cat-chip" data-cat="painting">🎨 Painting</button>
+      <button class="cat-chip" data-cat="carpentry">🪵 Carpentry</button>
+      <button class="cat-chip" data-cat="loading">📦 Loading</button>
+      <button class="cat-chip" data-cat="cleaning">🧹 Cleaning</button>
+      <button class="cat-chip" data-cat="farming">🌾 Farming</button>
+    </div>
+  </div>
+</section>
+
+<section class="jobs-section">
+  <div class="wrap">
+    <div class="feed-header">
+      <div>
+        <div class="section-label">Available now</div>
+        <h2 class="section-title">Jobs Near You</h2>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="openModal('postJob')">+ Post a Job</button>
+    </div>
+    <div class="job-grid" id="jobGrid">
+
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-cat-badge masonry">🧱 Masonry</div>
+          <div class="escrow-badge">🔒 Escrow Protected</div>
+        </div>
+        <h3 class="job-title">Senior Mason needed — 3 days</h3>
+        <div class="job-meta">
+          <span>📍 Jaipur, Rajasthan</span>
+          <span>👥 Toli of 4 needed</span>
+        </div>
+        <div class="job-wage">
+          <span class="wage-amount">₹850/day</span>
+          <span class="ai-wage">AI Fair Wage: ₹820–900</span>
+        </div>
+        <div class="job-contractor">
+          <div class="contractor-info">
+            <div class="contractor-avatar">RS</div>
+            <div>
+              <div class="contractor-name">Ramesh Sharma</div>
+              <div class="verified-badge">✅ Verified — 147 workers paid on time</div>
+            </div>
+          </div>
+        </div>
+        <div class="job-actions">
+          <button class="btn btn-primary btn-full" onclick="openModal('applyJob')">Apply Now</button>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('groupBid')">👥 Group Bid</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-cat-badge plumbing">🔧 Plumbing</div>
+          <div class="escrow-badge">🔒 Escrow Protected</div>
+        </div>
+        <h3 class="job-title">Plumber for bathroom renovation</h3>
+        <div class="job-meta">
+          <span>📍 Delhi, Lajpat Nagar</span>
+          <span>👤 1 person</span>
+        </div>
+        <div class="job-wage">
+          <span class="wage-amount">₹950/day</span>
+          <span class="ai-wage">AI Fair Wage: ₹900–1000</span>
+        </div>
+        <div class="job-contractor">
+          <div class="contractor-info">
+            <div class="contractor-avatar">PK</div>
+            <div>
+              <div class="contractor-name">Priya Kapoor</div>
+              <div class="verified-badge">✅ Verified — 89 workers paid on time</div>
+            </div>
+          </div>
+        </div>
+        <div class="job-actions">
+          <button class="btn btn-primary btn-full" onclick="openModal('applyJob')">Apply Now</button>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('groupBid')">👥 Group Bid</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-card-top">
+          <div class="job-cat-badge electrical">⚡ Electrical</div>
+          <div class="escrow-badge">🔒 Escrow Protected</div>
+        </div>
+        <h3 class="job-title">Electrician — wiring for new office</h3>
+        <div class="job-meta">
+          <span>📍 Mumbai, Andheri</span>
+          <span>👥 Toli of 2 needed</span>
+        </div>
+        <div class="job-wage">
+          <span class="wage-amount">₹1100/day</span>
+          <span class="ai-wage">AI Fair Wage: ₹1000–1200</span>
+        </div>
+        <div class="job-contractor">
+          <div class="contractor-info">
+            <div class="contractor-avatar">AJ</div>
+            <div>
+              <div class="contractor-name">Ajay Joshi</div>
+              <div class="verified-badge">✅ Verified — 212 workers paid on time</div>
+            </div>
+          </div>
+        </div>
+        <div class="job-actions">
+          <button class="btn btn-primary btn-full" onclick="openModal('applyJob')">Apply Now</button>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('groupBid')">👥 Group Bid</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="workers-section" id="workers">
+  <div class="wrap">
+    <div class="section-label">Top rated workers</div>
+    <h2 class="section-title">Hire Verified Workers</h2>
+    <div class="worker-grid">
+
+      <div class="worker-card">
+        <div class="worker-avatar-wrap">
+          <div class="worker-avatar">MK</div>
+          <div class="worker-online">●</div>
+        </div>
+        <div class="worker-name">Manoj Kumar</div>
+        <div class="worker-skill">Master Plumber</div>
+        <div class="worker-badges">
+          <span class="skill-badge gold">🏆 Certified Master</span>
+          <span class="skill-badge">10+ Jobs</span>
+          <span class="skill-badge">⭐ 4.9</span>
+        </div>
+        <div class="worker-wage">Suggests: <strong>₹1,045/day</strong> <span class="ai-tag">AI +10%</span></div>
+        <div class="worker-insurance">
+          <span class="insurance-on">🛡️ Daily Insurance Active</span>
+        </div>
+        <div class="worker-proof">
+          <div class="proof-thumb">📸</div>
+          <div class="proof-thumb">📸</div>
+          <div class="proof-thumb">📸</div>
+          <div class="proof-more">+7 more</div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="openModal('hireWorker')">Hire Manoj</button>
+      </div>
+
+      <div class="worker-card">
+        <div class="worker-avatar-wrap">
+          <div class="worker-avatar">SR</div>
+          <div class="worker-online">●</div>
+        </div>
+        <div class="worker-name">Sunita Rathore</div>
+        <div class="worker-skill">Master Painter</div>
+        <div class="worker-badges">
+          <span class="skill-badge gold">🏆 Certified Master</span>
+          <span class="skill-badge">15+ Jobs</span>
+          <span class="skill-badge">⭐ 4.8</span>
+        </div>
+        <div class="worker-wage">Suggests: <strong>₹880/day</strong> <span class="ai-tag">AI +10%</span></div>
+        <div class="worker-insurance">
+          <span class="insurance-on">🛡️ Daily Insurance Active</span>
+        </div>
+        <div class="worker-proof">
+          <div class="proof-thumb">📸</div>
+          <div class="proof-thumb">📸</div>
+          <div class="proof-thumb">📹</div>
+          <div class="proof-more">+12 more</div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="openModal('hireWorker')">Hire Sunita</button>
+      </div>
+
+      <div class="worker-card">
+        <div class="worker-avatar-wrap">
+          <div class="worker-avatar">RV</div>
+          <div class="worker-online">●</div>
+        </div>
+        <div class="worker-name">Raju Verma</div>
+        <div class="worker-skill">Senior Mason</div>
+        <div class="worker-badges">
+          <span class="skill-badge silver">🥈 Rising Star</span>
+          <span class="skill-badge">6 Jobs</span>
+          <span class="skill-badge">⭐ 4.7</span>
+        </div>
+        <div class="worker-wage">Rate: <strong>₹820/day</strong></div>
+        <div class="worker-insurance">
+          <label class="insurance-toggle">
+            <input type="checkbox" id="insToggle"/>
+            <span>🛡️ Add Daily Insurance (+₹5)</span>
+          </label>
+        </div>
+        <div class="worker-proof">
+          <div class="proof-thumb">📸</div>
+          <div class="proof-thumb">📹</div>
+          <div class="proof-more">+3 more</div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="openModal('hireWorker')">Hire Raju</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="features-strip">
+  <div class="wrap">
+    <div class="section-label">Why Dihaadi</div>
+    <h2 class="section-title">Built for Real Workers</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Escrow Payment</h3>
+        <p>Employer deposits wages upfront. Money releases automatically when GPS marks you "Checked Out." Zero wage theft.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Skill Badges + AI Wage</h3>
+        <p>Complete 10 jobs with 4+ stars → get "Certified Master" badge → AI suggests 10% higher fair wage automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Group Bidding (Toli)</h3>
+        <p>Lead worker bids for entire team of up to 10. No need to find 5 individuals — one click, whole team gets the job.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Proof of Work</h3>
+        <p>Upload 5-sec video or photo of finished work. Builds your visual portfolio. Better portfolio = more job offers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Micro-Insurance</h3>
+        <p>Toggle daily accidental coverage for just ₹5/day. Linked to your e-Shram ID. Active only during your shift.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎤</div>
+        <h3>Voice Search</h3>
+        <p>Can't type? Just say "Mujhe painting ka kaam chahiye" — app understands Hindi and shows nearby jobs instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="khata-section" id="khata">
+  <div class="wrap">
+    <div class="section-label">Digital Khata</div>
+    <h2 class="section-title">Your Work Record</h2>
+
+    <div class="khata-card">
+      <div class="khata-header">
+        <div>
+          <div class="khata-name">Manoj Kumar</div>
+          <div class="khata-id">e-Shram ID: UW-DL-2847302</div>
+        </div>
+        <div class="khata-balance">
+          <div class="balance-label">Total Earned</div>
+          <div class="balance-amount">₹48,350</div>
+        </div>
+      </div>
+
+      <div class="khata-live-label">🔴 Live — this session (from Firestore)</div>
+      <div class="khata-entries" id="liveKhataFeed">
+        <div class="khata-empty" id="khataEmptyMsg">No live activity yet — try "Upload Proof of Work" or "Hire &amp; Simulate Checkout" below.</div>
+      </div>
+
+      <div class="khata-live-label">Sample history</div>
+      <div class="khata-entries">
+        <div class="khata-row">
+          <div class="khata-work">
+            <strong>Bathroom Plumbing — Priya Kapoor</strong>
+            <div class="khata-date">12 Apr 2026 · 9am–6pm</div>
+            <div class="khata-proof-row">
+              <span class="proof-pill">📸 Proof uploaded</span>
+              <span class="insurance-pill">🛡️ Insured</span>
+            </div>
+          </div>
+          <div class="khata-amount paid">+₹950 <span class="paid-tag">✅ Paid</span></div>
+        </div>
+        <div class="khata-row">
+          <div class="khata-work">
+            <strong>Office Wiring — Ajay Joshi</strong>
+            <div class="khata-date">10 Apr 2026 · 8am–5pm</div>
+            <div class="khata-proof-row">
+              <span class="proof-pill">📹 Video uploaded</span>
+            </div>
+          </div>
+          <div class="khata-amount paid">+₹1100 <span class="paid-tag">✅ Paid</span></div>
+        </div>
+        <div class="khata-row">
+          <div class="khata-work">
+            <strong>Wall Painting — Ramesh Sharma</strong>
+            <div class="khata-date">8 Apr 2026 · 7am–4pm</div>
+            <div class="khata-proof-row">
+              <span class="proof-pill">📸 Proof uploaded</span>
+              <span class="insurance-pill">🛡️ Insured</span>
+            </div>
+          </div>
+          <div class="khata-amount escrow">+₹850 <span class="escrow-tag">🔒 In Escrow</span></div>
+        </div>
+      </div>
+
+      <button class="btn btn-ghost btn-full" onclick="openModal('uploadProof')">📸 Upload Proof of Work</button>
+    </div>
+  </div>
+</section>
+
+<section class="safety-section" id="safety">
+  <div class="wrap">
+    <div class="section-label">Worker Safety</div>
+    <h2 class="section-title">Always Protected</h2>
+    <div class="safety-grid">
+      <div class="safety-card red">
+        <div class="safety-icon">🚨</div>
+        <h3>Emergency SOS</h3>
+        <p>One tap sends your GPS location to emergency contacts and nearby workers.</p>
+        <button class="btn btn-danger btn-full" onclick="triggerSOS()">Activate SOS</button>
+      </div>
+      <div class="safety-card amber">
+        <div class="safety-icon">🛡️</div>
+        <h3>Daily Insurance</h3>
+        <p>₹5/day accidental coverage. Active only during your registered shift hours.</p>
+        <button class="btn btn-primary btn-full">Get Covered Today</button>
+      </div>
+      <div class="safety-card green">
+        <div class="safety-icon">⚖️</div>
+        <h3>Wage Dispute</h3>
+        <p>Employer refusing to pay? Raise a dispute. Escrow funds are frozen until resolved.</p>
+        <button class="btn btn-ghost btn-full">Raise Dispute</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="modal-postJob">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Post a Job</h2>
+      <button class="modal-close" onclick="closeModal('postJob')">✕</button>
+    </div>
+    <div class="field"><label class="field-label">Job Title</label><input class="field-input" id="postJobTitle" placeholder="e.g. Mason needed for 3 days"/></div>
+    <div class="field"><label class="field-label">Skill Required</label>
+      <select class="field-select" id="postJobSkill">
+        <option value="masonry">Masonry</option>
+        <option value="plumbing">Plumbing</option>
+        <option value="electrical">Electrical</option>
+        <option value="painting">Painting</option>
+        <option value="carpentry">Carpentry</option>
+        <option value="loading">Loading</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <div class="field"><label class="field-label">Daily Wage (₹)</label><input class="field-input" id="postJobWage" placeholder="e.g. 850" type="number"/></div>
+      <div class="field"><label class="field-label">Workers Needed</label><input class="field-input" id="postJobWorkers" placeholder="e.g. 4" type="number"/></div>
+    </div>
+    <div class="field"><label class="field-label">Location</label><input class="field-input" id="postJobLocation" placeholder="Area, City"/></div>
+    <div class="escrow-notice">🔒 <strong>Escrow Payment</strong> — You'll deposit the wages before work starts. Released automatically on checkout.</div>
+    <button class="btn btn-primary btn-full" onclick="submitPostJob()">Post & Deposit to Escrow</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-groupBid">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>👥 Group Bid (Toli)</h2>
+      <button class="modal-close" onclick="closeModal('groupBid')">✕</button>
+    </div>
+    <p style="color:var(--text-2);font-size:0.88rem;margin-bottom:1.5rem">Bid for this job as a team. Add your toli members below.</p>
+    <div class="field"><label class="field-label">Your Name (Lead Worker)</label><input class="field-input" id="bidLeadName" placeholder="Your name"/></div>
+    <div class="field"><label class="field-label">Team Size</label>
+      <select class="field-select" id="bidTeamSize"><option>2</option><option>3</option><option>4</option><option>5</option><option>6–10</option></select>
+    </div>
+    <div class="field"><label class="field-label">Member Phone Numbers</label><textarea class="field-textarea" id="bidPhones" placeholder="One number per line..."></textarea></div>
+    <button class="btn btn-primary btn-full" onclick="submitGroupBid()">Submit Group Bid</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-uploadProof">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>📸 Upload Proof of Work</h2>
+      <button class="modal-close" onclick="closeModal('uploadProof')">✕</button>
+    </div>
+    <p style="color:var(--text-2);font-size:0.88rem;margin-bottom:1.5rem">Upload a photo or short video of your completed work. This builds your visual portfolio.</p>
+    <div class="upload-zone">
+      <input type="file" id="proofFile" accept="image/*,video/*"/>
+      <div class="drop-icon">📸</div>
+      <div class="drop-text">Photo or video (max 30 sec)</div>
+      <div class="drop-hint">This goes into your Digital Khata permanently</div>
+    </div>
+    <div class="field"><label class="field-label">Describe the work done</label><textarea class="field-textarea" id="proofDescription" placeholder="e.g. Completed bathroom pipe fitting, tested for leaks..."></textarea></div>
+    <button class="btn btn-primary btn-full" onclick="submitProof()">Upload to Khata</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-applyJob">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Apply for Job</h2>
+      <button class="modal-close" onclick="closeModal('applyJob')">✕</button>
+    </div>
+    <div class="field"><label class="field-label">Your Name</label><input class="field-input" id="applyName" placeholder="Full name"/></div>
+    <div class="field"><label class="field-label">Phone Number</label><input class="field-input" id="applyPhone" placeholder="+91 98765 43210" type="tel"/></div>
+    <div class="field"><label class="field-label">e-Shram ID (optional)</label><input class="field-input" id="applyEshramId" placeholder="UW-XX-XXXXXXX"/></div>
+    <div class="insurance-row">
+      <label class="insurance-toggle-big">
+        <input type="checkbox" id="applyInsurance"/>
+        <div>
+          <strong>🛡️ Add Daily Insurance (+₹5)</strong>
+          <div style="font-size:0.78rem;color:var(--text-2)">Accidental coverage for this shift only</div>
+        </div>
+      </label>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="submitApplication()">Submit Application</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-hireWorker">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Hire Worker</h2>
+      <button class="modal-close" onclick="closeModal('hireWorker')">✕</button>
+    </div>
+    <div class="field"><label class="field-label">Job Date</label><input class="field-input" id="hireDate" type="date"/></div>
+    <div class="field"><label class="field-label">Location</label><input class="field-input" id="hireLocation" placeholder="Work site address"/></div>
+    <div class="field"><label class="field-label">Daily Wage (₹)</label><input class="field-input" id="hireWage" type="number" placeholder="AI suggested: 1045"/></div>
+    <div class="escrow-notice">🔒 This amount will be deposited to Escrow. Auto-released when worker checks out via GPS.</div>
+    <button class="btn btn-primary btn-full" onclick="submitHire()">Confirm & Pay to Escrow</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="logo" style="margin-bottom:0.5rem">⚒️ Dihaadi</div>
+        <div style="font-size:0.8rem;color:var(--text-3)">Daily Work, Dignified.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">How it works</a>
+        <a href="#safety">Safety</a>
+        <a href="#">e-Shram</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Built by Krisha Kohli — MUJ 2427030094 &nbsp;·&nbsp;
+    </div>
+  </div>
+</footer>
+
+<!-- Firebase (compat SDK — matches firebase-config.js syntax) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
